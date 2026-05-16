@@ -4,6 +4,10 @@ app = Flask(__name__)
 
 last_command = ""
 
+@app.route("/")
+def home():
+    return "Servidor online"
+
 @app.route("/send/<cmd>")
 def send(cmd):
     global last_command
@@ -16,5 +20,3 @@ def get():
     cmd = last_command
     last_command = ""
     return jsonify({"command": cmd})
-
-app.run(host="0.0.0.0", port=5000)
